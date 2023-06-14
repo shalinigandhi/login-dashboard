@@ -15,7 +15,12 @@ export const Dashboard = () => {
     return (
         <div className="dashboard-container">
             Welcome {auth.user.username}
-            <button onClick={() => handleLogout()}>Logout</button>
+            <button
+                className="btn logout-btn"
+                onClick={() => handleLogout()}
+            >
+                Logout
+            </button>
         </div>
     )
 }
