@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation, redirect } from 'react-router-dom';
 import { useAuth } from '../Auth/auth';
 
 export const Login = () => {
     const [user, setUser] = useState('');
     const auth = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleLogin = () => {
         auth.login(user);
-        navigate('/')
+        navigate('/dashboard', {replace: true})
     }
 
     return (
