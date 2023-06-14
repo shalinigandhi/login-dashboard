@@ -1,25 +1,35 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation, redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../Auth/auth';
 
 export const Login = () => {
-    const [user, setUser] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const auth = useAuth();
     const navigate = useNavigate();
-    const location = useLocation();
 
     const handleLogin = () => {
-        auth.login(user);
+        let data = {
+            'username': username,
+            'password': password
+        }
+        auth.login(data);
         navigate('/dashboard', {replace: true})
     }
 
     return (
         <div>
-            <label>
-                Username:
-                <input type="text" onChange={(e) => setUser(e.target.value)} />
-            </label>
-            <button onClick={() => handleLogin()}>Login</button>
+            <form>
+                <div className="form-group">
+                    <label>Username</label>
+                    <input type="text" onChange={(e) => setUsername(e.target.value)} />
+                </div>
+                <div className="form-group">
+                    <label>Password</label>
+                    <input type="password" onChange={(e) => setPassword(e.target.value)} />
+                </div>
+                <button onClick={() => handleLogin()}>Login</button>
+            </form>
         </div>
     )
 }

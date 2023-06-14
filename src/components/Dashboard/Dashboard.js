@@ -14,7 +14,7 @@ export const Dashboard = () => {
     
     return (
         <div className="dashboard-container">
-            Welcome {auth.user}
+            Welcome {auth.user.username}
             <button onClick={() => handleLogout()}>Logout</button>
         </div>
     )
