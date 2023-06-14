@@ -1,0 +1,16 @@
+@import '../../styles/colors';
+
+.dashboard-container {
+    .dashboard-wrapper {
+        .aside-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            min-width: 320px;
+            padding: 50px 20px;
+            background: $orange;
+            color: $white;
+        }
+    }
+}

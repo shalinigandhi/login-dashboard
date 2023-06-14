@@ -4,6 +4,7 @@ import { AuthProvider } from './components/Auth/auth';
 import { Dashboard } from "./components/Dashboard/Dashboard";
 import { Login } from "./components/Login/Login";
 import { RequireAuth } from "./components/Auth/RequireAuth";
+import './styles/main.scss';
 
 function App() {
   return (

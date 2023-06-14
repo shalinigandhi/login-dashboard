@@ -1,0 +1,35 @@
+@import '../../styles/colors';
+
+.todo-form {
+    margin-top: 50px;
+    display: flex;
+
+    .todo-input {
+        background: $white;
+        border: 1px solid #e5e5e6;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,.04), 0 1px 1px rgba(0,0,0,.04);
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19px;
+        padding: 20px 24px;
+        width: 100%;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .todo-btn {
+        min-width: 200px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,.04), 0 1px 1px rgba(0,0,0,.04);
+        font-size: 20px;
+        font-weight: 400;
+        border: 1px solid $orange;
+    }
+}
