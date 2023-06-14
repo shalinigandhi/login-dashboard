@@ -1,11 +1,21 @@
 import React from 'react';
+import { useAuth } from '../Auth/auth';
+import { useNavigate } from 'react-router-dom';
 
-const Dashboard = () => {
+export const Dashboard = () => {
+
+    const auth = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        auth.logout();
+        navigate('/login')
+    }
+    
     return (
         <div className="dashboard-container">
-            Dashboard
+            Welcome {auth.user}
+            <button onClick={() => handleLogout()}>Logout</button>
         </div>
     )
 }
-
-export default Dashboard;

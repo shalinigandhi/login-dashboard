@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
-import { useAuth } from '../auth';
+import { useAuth } from '../Auth/auth';
 
-const NavBar = () => {
+export const NavBar = () => {
     const auth = useAuth();
     return (
         <nav>
@@ -12,5 +12,3 @@ const NavBar = () => {
         </nav>
     )
 }
-
-export default NavBar;

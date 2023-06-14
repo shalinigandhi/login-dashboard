@@ -2,7 +2,7 @@ import { useState, useContext, createContext } from "react";
 
 const AuthContext = createContext(null);
 
-const AuthProvider = ({ childern }) => {
+export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     const login = (user) => {
@@ -15,7 +15,7 @@ const AuthProvider = ({ childern }) => {
 
     return (
         <AuthContext.Provider value={{ user, login, logout }}>
-            {childern}
+            {children}
         </AuthContext.Provider>
     )
 }
@@ -23,5 +23,3 @@ const AuthProvider = ({ childern }) => {
 export const useAuth = () => {
     return useContext(AuthContext);
 }
-
-export default AuthProvider;
