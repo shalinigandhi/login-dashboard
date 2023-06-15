@@ -1,0 +1,63 @@
+@import '../../../styles/colors';
+
+.todo-list-container {
+    .heading-wrapper {
+        display: flex;
+        align-items: center;
+
+        .heading {
+            margin-left: 10px;
+        }
+    }
+
+    .todo-row-container {
+        margin-top: 30px;
+
+        .todo-row {
+            box-shadow: 0px 0px 3px rgba(0,0,0,.1);
+            padding: 12px 24px;
+            border-radius: 6px;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            border: 1px solid #e5e5e6;
+            background: $white;
+            transition: 0.1s all ease-in-out;
+
+            &.complete {
+                background: $green;
+                border: 1px solid #008a43;
+            }
+
+            .title {
+                text-transform: capitalize;
+            }
+
+            &:first-of-type {
+                margin-top: 0;
+            }
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+
+            .icons {
+
+                &.status-pending-icons {
+                    svg {
+                        cursor: pointer;
+                        display: inline-block;
+    
+                        &:first-of-type {
+                            margin-right: 10px;
+        
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}

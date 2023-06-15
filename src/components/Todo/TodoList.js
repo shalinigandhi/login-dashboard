@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import sunImage from '../../assets/happy-sun.png';
 import TodoForm from './TodoForm';
 import Todo from './Todo';
-import './todo.scss';
+import './todo-styles/todo.scss';
 
 function TodoList() {
     const [todos, setTodos] = useState([]);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './todo-form.scss';
+import './todo-styles/todo-form.scss';
 
 function TodoForm(props) {
     const [input, setInput] = useState('');
@@ -21,7 +21,7 @@ function TodoForm(props) {
         <form className='todo-form' onSubmit={(e) => handleSubmit(e)}>
             <input
                 type="text"
-                placeholder="Add a Todo"
+                placeholder="What is your next task?"
                 value={input}
                 name="text"
                 className="todo-input"

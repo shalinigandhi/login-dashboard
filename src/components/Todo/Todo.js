@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import TodoForm from './TodoForm';
-// import { RiCloseCircleLine } from 'react-icons/ri';
-// import { TiEdit } from 'react-icons/ti';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash, faPenToSquare, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
   const [edit, setEdit] = useState({
@@ -21,26 +21,31 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
     return <TodoForm edit={edit} onSubmit={submitUpdate} />;
   }
 
-  return todos.map((todo, index) => (
-    <div
-      className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
-      key={index}
-    >
-      <div key={todo.id} onClick={() => completeTodo(todo.id)}>
-        {todo.title}
-      </div>
-      {/* <div className='icons'>
-        <RiCloseCircleLine
-          onClick={() => removeTodo(todo.id)}
-          className='delete-icon'
-        />
-        <TiEdit
-          onClick={() => setEdit({ id: todo.id, value: todo.text })}
-          className='edit-icon'
-        />
-      </div> */}
-    </div>
-  ));
+  return (
+    <ul className="todo-row-container">
+      {
+        todos.map((todo, index) => (
+    
+          <li
+            className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
+            key={index}
+            onClick={() => completeTodo(todo.id)}
+          >
+            <span key={todo.id} className="title">{todo.title}</span>
+            {
+              !todo.isComplete ?
+              <span className="icons status-pending-icons">
+                <FontAwesomeIcon icon={faPenToSquare} style={{ color: "#ffa500", }} onClick={() => setEdit({ id: todo.id, value: todo.title })}/>
+                <FontAwesomeIcon icon={faTrash} style={{color: "#ffa500"}} onClick={() => removeTodo(todo.id)}/>
+              </span> :
+              <span className="icons"><FontAwesomeIcon icon={faCheck} style={{color: "#008a43"}} /></span>
+            }
+            
+          </li>
+        ))
+      }
+    </ul>
+  )
 };
 
 export default Todo;
