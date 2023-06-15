@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../Auth/auth';
 import credentials from '../../data/credentials.json';
+import './login.scss';
 
 export const Login = () => {
     const [username, setUsername] = useState('');
@@ -28,7 +29,7 @@ export const Login = () => {
             });
             navigate('/dashboard')
         } else {
-            setError('Invalid username and/or password');
+            setError('*Invalid username and/or password');
         }
         
     }
@@ -44,7 +45,7 @@ export const Login = () => {
     }
 
     return (
-        <div>
+        <div className="login-container">
             <form onSubmit={e => handleLogin(e)}>
                 <div className="form-group">
                     <label>Username</label>
@@ -55,7 +56,7 @@ export const Login = () => {
                     <input type="password" onChange={(e) => handlePassword(e)} />
                 </div>
                 {error && <p className="error-message">{error}</p>}
-                <button>Login</button>
+                <button className="btn login-btn">Login</button>
             </form>
         </div>
     )

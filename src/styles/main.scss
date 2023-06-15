@@ -39,3 +39,43 @@ main {
     margin-left: 320px;
     padding: 50px;
 }
+
+input {
+    background: $white;
+    border: 1px solid #e5e5e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.04), 0 1px 1px rgba(0,0,0,.04);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    padding: 12px 24px;
+    width: 100%;
+
+    &:focus {
+        outline: none;
+    }
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: $gray-gradient1;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: $gray-gradient1;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: $gray-gradient1;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: $gray-gradient1;
+    }
+}
