@@ -8,8 +8,10 @@ function TodoForm(props) {
         e.preventDefault();
         props.onSubmit({
             id: Math.floor(Math.random() * 10000),
-            title: input
-          });
+            title: input,
+            showSubTasks: false,
+            subTasks: []
+        });
         setInput('');
     }
 
@@ -27,7 +29,7 @@ function TodoForm(props) {
                 className="task-input"
                 onChange={(e) => handleChange(e)}
             />
-            <button className="btn primary-btn task-btn">{props.edit ? 'Edit' : 'Add'} Task</button>
+            <button className="btn primary-btn task-btn">Add Task</button>
         </form>
     )
 }

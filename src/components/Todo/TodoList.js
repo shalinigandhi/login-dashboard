@@ -35,8 +35,57 @@ function TodoList() {
         setTasks(updatedTasks);
     };
   
-    const addSubTask = id => {
-      console.log(id);
+    const showSubTasksDiv = id => {
+      let updatedTasks = tasks.map(task => {
+        if (task.id === id) { 
+          task.showSubTasks = true;
+        }
+        return task;
+      });
+      setTasks(updatedTasks);
+    }
+
+  
+    const addSubTask = (id, value) => {
+      let updatedTasks = tasks.map(task => {
+        if (task.id === id) { 
+          task.showSubTasks = false;
+          task.subTasks.push({
+            id: id + "_" + task.subTasks.length,
+            title: value,
+            isComplete: false
+          });
+        }
+        return task;
+      });
+      setTasks(updatedTasks);
+    }
+  
+    const removeSubTask = (taskId, subTaskId) => {
+      const removedTasks = tasks.map((task) => {
+        let removedSubTaskArr = [];
+        if (task.id === taskId) {
+          removedSubTaskArr = [...task.subTasks].filter(subTask => subTask.id !== subTaskId);
+          task.subTasks = [...removedSubTaskArr];
+        }
+        return task;
+      })
+      setTasks(removedTasks);
+    }
+  
+    const completeSubTask = (taskId, subTaskId) => {
+      let updatedTasks = tasks.map(task => {
+        if (task.id === taskId) {
+          task.subTasks.map((subTask) => {
+            if (subTask.id === subTaskId) {
+              subTask.isComplete = !subTask.isComplete;
+            }
+            return subTask;
+          })
+        }
+        return task;
+      });
+      setTasks(updatedTasks);
     }
 
     return (
@@ -51,6 +100,9 @@ function TodoList() {
           completeTask={completeTask}
           removeTask={removeTask}
           addSubTask={addSubTask}
+          showSubTasksDiv={showSubTasksDiv}
+          removeSubTask={removeSubTask}
+          completeSubTask={completeSubTask}
         />
       </div>
     )

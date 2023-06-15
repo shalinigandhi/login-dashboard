@@ -4,6 +4,18 @@
     margin-top: 50px;
     display: flex;
 
+    &.sub-task-form {
+        margin-top: 20px;
+
+        .task-input {
+            font-size: 14px;
+            padding: 10px 12px;
+        }
+        .task-btn {
+            font-size: 14px;
+        }
+    }
+
     .task-input {
         background: $white;
         border: 1px solid #e5e5e6;
