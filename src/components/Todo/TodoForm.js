@@ -18,16 +18,16 @@ function TodoForm(props) {
     }
 
     return (
-        <form className='todo-form' onSubmit={(e) => handleSubmit(e)}>
+        <form className='task-form' onSubmit={(e) => handleSubmit(e)}>
             <input
                 type="text"
                 placeholder="What is your next task?"
                 value={input}
                 name="text"
-                className="todo-input"
+                className="task-input"
                 onChange={(e) => handleChange(e)}
             />
-            <button className="btn primary-btn todo-btn">{props.edit ? 'Edit' : 'Add'} Task</button>
+            <button className="btn primary-btn task-btn">{props.edit ? 'Edit' : 'Add'} Task</button>
         </form>
     )
 }

@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
-import TodoForm from './TodoForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faPenToSquare, faCheck, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faCheck, faPlus } from '@fortawesome/free-solid-svg-icons'
 
-const Todo = ({ todos, completeTask, removeTask }) => {
+const Todo = ({ tasks, completeTask, removeTask, addSubTask }) => {
 
   return (
-    <ul className="todo-row-container">
+    <ul className="task-row-container">
       {
-        todos.map((todo, index) => (
+        tasks.map((task, index) => (
     
           <li
-            className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
+            className={task.isComplete ? 'task-row complete' : 'task-row'}
             key={index}
           >
-            <span key={todo.id} className="title" onClick={() => completeTask(todo.id)}>{todo.title}</span>
+            <span key={task.id} className="title" onClick={() => completeTask(task.id)}>{task.title}</span>
             {
-              !todo.isComplete ?
+              !task.isComplete ?
                 <span className="icons status-pending-icons">
-                  <FontAwesomeIcon icon={faPlus} style={{ color: "#ffa500" }}/>
-                  <FontAwesomeIcon icon={faTrash} style={{color: "#ffa500"}} onClick={() => removeTask(todo.id)}/>
+                  <FontAwesomeIcon icon={faPlus} style={{ color: "#ffa500" }} onClick={() => addSubTask(task.id)} />
+                  <FontAwesomeIcon icon={faTrash} style={{color: "#ffa500"}} onClick={() => removeTask(task.id)}/>
               </span> :
               <span className="icons"><FontAwesomeIcon icon={faCheck} style={{color: "#008a43"}} /></span>
             }

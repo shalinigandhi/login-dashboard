@@ -5,47 +5,52 @@ import Todo from './Todo';
 import './todo-styles/todo.scss';
 
 function TodoList() {
-    const [todos, setTodos] = useState([]);
+    const [tasks, setTasks] = useState([]);
 
-    const addTodo = todo => {
-        if (!todo.title || /^\s*$/.test(todo.title)) {
+    const addTodo = task => {
+        if (!task.title || /^\s*$/.test(task.title)) {
           return;
         }
     
-        const newTodos = [todo, ...todos];
+        const newTasks = [task, ...tasks];
     
-        setTodos(newTodos);
-        console.log(...todos);
+        setTasks(newTasks);
+        console.log(...tasks);
     };
 
 
     const removeTask = id => {
-        const removedArr = [...todos].filter(todo => todo.id !== id);
+        const removedArr = [...tasks].filter(task => task.id !== id);
     
-        setTodos(removedArr);
+        setTasks(removedArr);
     };
 
     const completeTask = id => {
-        let updatedTodos = todos.map(todo => {
-          if (todo.id === id) {
-            todo.isComplete = !todo.isComplete;
+        let updatedTasks = tasks.map(task => {
+          if (task.id === id) {
+            task.isComplete = !task.isComplete;
           }
-          return todo;
+          return task;
         });
-        setTodos(updatedTodos);
+        setTasks(updatedTasks);
     };
+  
+    const addSubTask = id => {
+      console.log(id);
+    }
 
     return (
-      <div className="todo-list-container">
+      <div className="task-list-container">
         <div className="heading-wrapper">
           <span className="image-wrapper"><img src={sunImage} alt="Happy Sun" width="100"/></span>
           <h1 className="heading">What's the plan for today?</h1>
         </div>
         <TodoForm onSubmit={addTodo} />
         <Todo
-            todos={todos}
-            completeTask={completeTask}
-            removeTask={removeTask}
+          tasks={tasks}
+          completeTask={completeTask}
+          removeTask={removeTask}
+          addSubTask={addSubTask}
         />
       </div>
     )
