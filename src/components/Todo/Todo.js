@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faCheck, faPlus } from '@fortawesome/free-solid-svg-icons'
-import TodoForm from './TodoForm';
 
 const Todo = ({ tasks, completeTask, removeTask, showSubTasksDiv, addSubTask, completeSubTask, removeSubTask }) => {
 

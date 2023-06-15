@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import sunImage from '../../assets/happy-sun.png';
 import TodoForm from './TodoForm';
 import Todo from './Todo';
 import './todo-styles/todo.scss';
 
 function TodoList({tasks, setTasks}) {
-  // const [tasks, setTasks] = useState([]);
 
     const addTodo = task => {
         if (!task.title || /^\s*$/.test(task.title)) {

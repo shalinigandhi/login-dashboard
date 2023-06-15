@@ -14,13 +14,9 @@ export const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
        
-        const isValidCredentials = credentials.users.filter((user) => {
-            if (user.username.toLowerCase() === username.toLowerCase()) {
-                if (user.password.toLowerCase() === password.toLowerCase()) {
-                    return true;
-                }
-            }
-        })
+        const isValidCredentials = credentials.users.filter((user) => (
+            (user.username.toLowerCase() === username.toLowerCase()) && (user.password.toLowerCase() === password.toLowerCase())
+        ))
 
         if (isValidCredentials && isValidCredentials.length) {
             auth.login({
