@@ -82,6 +82,14 @@ function TodoList() {
             }
             return subTask;
           })
+          const isTaskFullyComplete = task.subTasks.every((subTask) => (
+            subTask.isComplete === true
+          ))
+          if (isTaskFullyComplete) {
+            completeTask(taskId);
+          } else {
+            task.isComplete = false;
+          }
         }
         return task;
       });
