@@ -1,34 +1,61 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../Auth/auth';
+import credentials from '../../data/credentials.json';
 
 export const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const auth = useAuth();
     const navigate = useNavigate();
 
-    const handleLogin = () => {
-        let data = {
-            'username': username,
-            'password': password
+    const handleLogin = (e) => {
+        e.preventDefault();
+        
+        const isValidCredentials = credentials.users.filter((user) => {
+            if (user.username.toLowerCase() === username.toLowerCase()) {
+                if (user.password.toLowerCase() === password.toLowerCase()) {
+                    return true;
+                }
+            }
+        })
+
+        if (isValidCredentials && isValidCredentials.length) {
+            auth.login({
+                'username': username,
+                'password': password
+            });
+            navigate('/dashboard')
+        } else {
+            setError('Invalid username and/or password');
         }
-        auth.login(data);
-        navigate('/dashboard', {replace: true})
+        
+    }
+
+    const handleUsername = (e) => {
+        setUsername(e.target.value);
+        setError('');
+    }
+
+    const handlePassword = (e) => {
+        setPassword(e.target.value);
+        setError('');
     }
 
     return (
         <div>
-            <form>
+            <form onSubmit={e => handleLogin(e)}>
                 <div className="form-group">
                     <label>Username</label>
-                    <input type="text" onChange={(e) => setUsername(e.target.value)} />
+                    <input type="text" onChange={(e) => handleUsername(e)} />
                 </div>
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" onChange={(e) => handlePassword(e)} />
                 </div>
-                <button onClick={() => handleLogin()}>Login</button>
+                {error && <p className="error-message">{error}</p>}
+                <button>Login</button>
             </form>
         </div>
     )
