@@ -21,8 +21,11 @@ export const Dashboard = () => {
         <div className="dashboard-container">
             <div className="dashboard-wrapper">
                 <aside className="aside-container">
-                    <h2 className="greetings"> Hello, <span className="username">{auth.user.username}!</span></h2>
-                    <p className="message">{tasks.length > 0 && <span>{ tasks.length} Tasks, </span>}Limitless Possibilities: Discover the magic of today!</p>
+                    <div className="user-details">
+                        <h2 className="greetings"> Hello, <span className="username">{auth.user.username}!</span></h2>
+                        <p className="message">{tasks.length > 0 && <span>{ tasks.length} Tasks, </span>}Limitless Possibilities: Discover the magic of today!</p>
+                    </div>
+                    
                     <button
                         className="btn logout-btn"
                         onClick={() => handleLogout()}

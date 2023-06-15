@@ -1,8 +1,13 @@
 @import '../../../styles/colors';
+@import '../../../styles/responsive';
 
 .task-form {
     margin-top: 50px;
     display: flex;
+
+    @include mobileLarge {
+        margin-top: 30px;
+    }
 
     &.sub-task-form {
         margin-top: 20px;
@@ -13,6 +18,13 @@
         }
         .task-btn {
             font-size: 14px;
+
+            @include mobileLarge {
+                min-width: 100px;
+                font-size: 16px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
         }
     }
 
