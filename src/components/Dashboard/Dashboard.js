@@ -5,8 +5,12 @@ import TodoList from '../Todo/TodoList';
 import './dashboard.scss';
 
 export const Dashboard = () => {
+    const [tasks, setTasks] = React.useState([]);
+    
     const auth = useAuth();
     const navigate = useNavigate();
+
+    console.log(tasks);
 
     const handleLogout = () => {
         auth.logout();
@@ -18,6 +22,7 @@ export const Dashboard = () => {
             <div className="dashboard-wrapper">
                 <aside className="aside-container">
                     <h2 className="greetings"> Hello, <span className="username">{auth.user.username}!</span></h2>
+                    <p className="message">{tasks.length > 0 && <span>{ tasks.length} Tasks, </span>}Limitless Possibilities: Discover the magic of today!</p>
                     <button
                         className="btn logout-btn"
                         onClick={() => handleLogout()}
@@ -26,7 +31,7 @@ export const Dashboard = () => {
                     </button>
                 </aside>
                 <main>
-                    <TodoList />
+                    <TodoList tasks={tasks} setTasks={setTasks} />
                 </main>
             </div>
         </div>

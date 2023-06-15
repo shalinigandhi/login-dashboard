@@ -4,8 +4,8 @@ import TodoForm from './TodoForm';
 import Todo from './Todo';
 import './todo-styles/todo.scss';
 
-function TodoList() {
-    const [tasks, setTasks] = useState([]);
+function TodoList({tasks, setTasks}) {
+  // const [tasks, setTasks] = useState([]);
 
     const addTodo = task => {
         if (!task.title || /^\s*$/.test(task.title)) {
@@ -15,7 +15,6 @@ function TodoList() {
         const newTasks = [task, ...tasks];
     
         setTasks(newTasks);
-        console.log(...tasks);
     };
 
 

@@ -35,8 +35,8 @@
 }
 
 main {
-    width: calc(100vw - 320px);
-    margin-left: 320px;
+    max-width: 1000px;
+    margin: 0 auto;
     padding: 50px;
 }
 
