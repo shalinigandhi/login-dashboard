@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../Auth/auth';
 import credentials from '../../data/credentials.json';
 import './login.scss';
-import axios from 'axios';
 
 export const Login = () => {
     const [username, setUsername] = useState('');
@@ -14,20 +13,14 @@ export const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        let isValidCredentials;
-
-        axios
-            .get('http://localhost:3500/users')
-            .then(res => {
-                isValidCredentials = res?.data.filter((user) => {
-                    if (user.username.toLowerCase() === username.toLowerCase()) {
-                        if (user.password.toLowerCase() === password.toLowerCase()) {
-                            return true;
-                        }
-                    }
-                })
-            })
-        
+       
+        const isValidCredentials = credentials.users.filter((user) => {
+            if (user.username.toLowerCase() === username.toLowerCase()) {
+                if (user.password.toLowerCase() === password.toLowerCase()) {
+                    return true;
+                }
+            }
+        })
 
         if (isValidCredentials && isValidCredentials.length) {
             auth.login({
