@@ -27,7 +27,7 @@ function TodoForm(props) {
                 className="todo-input"
                 onChange={(e) => handleChange(e)}
             />
-            <button className="btn primary-btn todo-btn">Add Task</button>
+            <button className="btn primary-btn todo-btn">{props.edit ? 'Edit' : 'Add'} Task</button>
         </form>
     )
 }

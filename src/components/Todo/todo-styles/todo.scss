@@ -33,6 +33,7 @@
 
             .title {
                 text-transform: capitalize;
+                flex-grow: 1;
             }
 
             &:first-of-type {
@@ -52,7 +53,10 @@
     
                         &:first-of-type {
                             margin-right: 10px;
-        
+                        }
+
+                        &:last-of-type {
+                            margin-left: 10px;
                         }
                     }
                 }

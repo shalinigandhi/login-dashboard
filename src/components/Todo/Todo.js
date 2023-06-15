@@ -1,25 +1,9 @@
 import React, { useState } from 'react';
 import TodoForm from './TodoForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faPenToSquare, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faPenToSquare, faCheck, faPlus } from '@fortawesome/free-solid-svg-icons'
 
-const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
-  const [edit, setEdit] = useState({
-    id: null,
-    value: ''
-  });
-
-  const submitUpdate = value => {
-    updateTodo(edit.id, value);
-    setEdit({
-      id: null,
-      value: ''
-    });
-  };
-
-  if (edit.id) {
-    return <TodoForm edit={edit} onSubmit={submitUpdate} />;
-  }
+const Todo = ({ todos, completeTask, removeTask }) => {
 
   return (
     <ul className="todo-row-container">
@@ -29,14 +13,13 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
           <li
             className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
             key={index}
-            onClick={() => completeTodo(todo.id)}
           >
-            <span key={todo.id} className="title">{todo.title}</span>
+            <span key={todo.id} className="title" onClick={() => completeTask(todo.id)}>{todo.title}</span>
             {
               !todo.isComplete ?
-              <span className="icons status-pending-icons">
-                <FontAwesomeIcon icon={faPenToSquare} style={{ color: "#ffa500", }} onClick={() => setEdit({ id: todo.id, value: todo.title })}/>
-                <FontAwesomeIcon icon={faTrash} style={{color: "#ffa500"}} onClick={() => removeTodo(todo.id)}/>
+                <span className="icons status-pending-icons">
+                  <FontAwesomeIcon icon={faPlus} style={{ color: "#ffa500" }}/>
+                  <FontAwesomeIcon icon={faTrash} style={{color: "#ffa500"}} onClick={() => removeTask(todo.id)}/>
               </span> :
               <span className="icons"><FontAwesomeIcon icon={faCheck} style={{color: "#008a43"}} /></span>
             }
